@@ -8,11 +8,21 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+.pnp.jscashed
+
+
+# backendディレクトリのnode_modulesを無視
+/backend/node_modules
+
+# frontendディレクトリのnode_modulesを無視
+/frontend/node_modules
 
 # compiled output
-/dist
 /build
+
+# backendのdistフォルダを無視
+backend/dist
+
 
 # Logs
 logs
