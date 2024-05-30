@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { ElasticsearchModule } from '@nestjs/elasticsearch';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './user/user.module';
+import { ChatHistoryModule } from './chat-history/chat-history.module';
+import { FeedbackModule } from './feedback/feedback.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -46,6 +50,10 @@ import { MongooseModule } from '@nestjs/mongoose';
         password: process.env.MONGO_INITDB_ROOT_PASSWORD,
       },
     }),
+    UserModule,
+    ChatHistoryModule,
+    FeedbackModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
