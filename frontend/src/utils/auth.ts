@@ -9,3 +9,9 @@ export const getAccessToken = () => {
 export const removeAccessToken = () => {
   localStorage.removeItem('accessToken');
 };
+
+export const isAuthenticated = () => {
+  const token = getAccessToken();
+  // トークンの有効性をチェックするロジックを追加できます
+  return !!token;
+};

@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+
 
 @Controller('users')
 export class UserController {
@@ -18,8 +20,14 @@ export class UserController {
     return this.userService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  @Get(':username')
+  findOne(@Param('username') username: string) {
+    return this.userService.findOne(username);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('protected')
+  getProtectedData() {
+    return { message: 'This is protected user data.' };
   }
 }

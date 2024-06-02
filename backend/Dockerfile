@@ -18,7 +18,10 @@ ENV TZ=Asia/Tokyo
 COPY package*.json ./
 
 # Install the dependencies
-RUN npm ci
+RUN npm install
+RUN npm install pg --save
+RUN npm install passport-local
+RUN npm install class-transformer
 
 # Copy the rest of the application code to the working directory
 COPY . .
@@ -27,4 +30,4 @@ COPY . .
 EXPOSE 3000
 
 # Run the backend server
-# CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "start:dev"]

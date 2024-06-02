@@ -33,12 +33,13 @@ export const LoginForm: React.FC = () => {
       });
       if (response.ok) {
         const data = await response.json();
+        console.log('Login successful:', data);
         setAccessToken(data.access_token);
         navigate('/protected');
         console.log('Login successful:', data);
         // TODO: Store the access token and redirect to a protected page
       } else {
-        console.error('Login failed.');
+        console.error('Login failed:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error:', error);
