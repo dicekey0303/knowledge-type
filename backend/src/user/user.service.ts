@@ -12,7 +12,10 @@ export class UserService {
   ) { }
 
   create(createUserDto: CreateUserDto) {
+    console.log('UserService: create method called');
+    console.log('UserService: createUserDto', createUserDto);
     const user = this.userRepository.create(createUserDto);
+    console.log('UserService: user', user);
     return this.userRepository.save(user);
   }
 
